@@ -1,4 +1,5 @@
 import java.io.Console;
+import java.util.Scanner;
 
 /**
  * Assignment 1 - Guessing Game
@@ -35,8 +36,9 @@ public class Guesser {
      */
     public void start() {
         // call the rules method here
-
+        rules();
         // call the doGuesses() method here
+        doGuesses();
     }
 
     private void rules() {
@@ -58,11 +60,16 @@ public class Guesser {
      * the player.
      */
     private String getReply() {
-        String reply = null;
-        // Write code here which reads a String from the console.
-        // As long as it is not a valid reply (one of "T" and "F")
-        // write an error message, and read a new reply.
-        // When you have gotten a valid reply, return it.
+        Scanner scanner = new Scanner(System.in);
+        String reply;
+        do {
+            System.out.println("enter your answer: [t/f]");
+            reply = scanner.nextLine();
+            if (!(reply.equalsIgnoreCase("t") || reply.equalsIgnoreCase("f"))) {
+                System.out.println("invalid answer! try again");
+            }
+        } while (!(reply.equalsIgnoreCase("t") || reply.equalsIgnoreCase("f")));
+        scanner.close();
         return reply;
     }
 
