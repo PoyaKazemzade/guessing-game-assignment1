@@ -63,12 +63,12 @@ public class Guesser {
         Scanner scanner = new Scanner(System.in);
         String reply;
         do {
-            System.out.println("enter your answer: [t/f]");
-            reply = scanner.nextLine();
-            if (!(reply.equalsIgnoreCase("t") || reply.equalsIgnoreCase("f"))) {
+            System.out.println("enter your answer: [T/F]");
+            reply = scanner.nextLine().toUpperCase();
+            if (!(reply.equals("T") || reply.equals("F"))) {
                 System.out.println("invalid answer! try again");
             }
-        } while (!(reply.equalsIgnoreCase("t") || reply.equalsIgnoreCase("f")));
+        } while (!(reply.equals("T") || reply.equals("F")));
         scanner.close();
         return reply;
     }
