@@ -1,5 +1,3 @@
-import java.io.Console;
-import java.util.Scanner;
 
 /**
  * Assignment 1 - Guessing Game
@@ -60,16 +58,11 @@ public class Guesser {
      * the player.
      */
     private String getReply() {
-        Scanner scanner = new Scanner(System.in);
-        String reply;
-        do {
+        String reply = System.console().readLine().toUpperCase();
+        while (!(reply.equals("T") || reply.equals("F"))) {
             System.out.println("enter your answer: [T/F]");
-            reply = scanner.nextLine().toUpperCase();
-            if (!(reply.equals("T") || reply.equals("F"))) {
-                System.out.println("invalid answer! try again");
-            }
-        } while (!(reply.equals("T") || reply.equals("F")));
-        scanner.close();
+            reply = System.console().readLine().toUpperCase();
+        }
         return reply;
     }
 
