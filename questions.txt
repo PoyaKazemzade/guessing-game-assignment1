@@ -1,0 +1,66 @@
+1-När använder man add respektive commit?
+
+   - git add: Används för att lägga till ändringar i arbetskatalogen till "staging area". Det betyder att du markerar ändringarna som du vill inkludera i nästa commit.
+   - git commit: Används för att spara de ändringar som finns i "staging area" till Git repository. En commit är en snapshot av ditt projekt vid en viss tidpunkt med en beskrivning av ändringarna.
+
+2-Vad är pull respektive push?
+
+   - git pull: Används för att hämta ändringar från en remote repository och sammanfoga dem med den lokala arbetskatalogen.
+   - git push: Används för att skicka dina lokala commits till en remote repository.
+
+3-När använder man log respektive status?
+
+   - git log: Visar en historik över tidigare commits i projektet. Man kan se vem som gjorde ändringen, när den gjordes och meddelandet som skickades med commit.
+   - git status: Visar statusen för arbetskatalog i förhållande till den senaste commit. Man kan se vilka filer som har ändrats, vilka som är i "staging area" och vilka som inte är spårade.
+
+4-Vad är en Git branch och varför är de viktiga?
+
+   - En Git branch är en oberoende linje av utveckling i ett Git repository. Det tillåter utvecklaren att separera olika funktioner eller ändringar utan att påverka huvudgrenen (ofta kallad 'master' eller 'main').
+   - Grenar gör det möjligt för flera personer att arbeta på olika funktioner samtidigt utan att störa varandras arbete. De möjliggör också förändringar och experiment utan att påverka huvudprojektet direkt.
+   - Att använda grenar är en viktig del av en strukturerad och hanterbar Git-arbetsflöde. Grenar kan skapas, bytas och merge för att organisera och hantera koden effektivt.
+
+
+
+-Extra poäng-
+-Det finns flera sätt att rulla tillbaka koden till ett tidigare tillstånd. Förklara skillnaden och motivera när man skulle använda den ena eller andra metoden. Ge exempel på de kommandon du använder för att göra detta och vissa att det fungerar, vilken output du fick från git-kommandona.
+Tips: Gör exemplen med att backa i en branch så att master fortfarande är korrekt.
+
+
+
+1. Ångra senaste commit:
+   - Om man vill ångra den senaste commit, används 'git reset' eller 'git revert'.
+
+   - Exempel med 'git reset':
+     git reset --hard HEAD~1
+     Detta kommer att ångra den senaste commit och alla ändringar kommer att tas bort från arbetskatalogen.
+
+   - Exempel med 'git revert':
+     git revert HEAD
+     Detta kommer att skapa en ny commit som gör motsatsen till den senaste commit.
+
+2. Ångra ändringar i arbetskatalogen:
+   - Om man vill behålla commit men ångra ändringar i arbetskatalogen kan du använda 'git checkout' eller 'git restore'.
+
+   - Exempel med 'git checkout':
+     git checkout -- <file_path>
+     Detta kommer att ångra ändringarna för en specifik fil i arbetskatalogen.
+
+   - Exempel med 'git restore':
+     git restore <file_path>
+     Detta gör samma sak som 'git checkout' för att ångra ändringar i arbetskatalogen.
+
+3. Ångra commit och bevara ändringar i arbetskatalogen:
+   - Om man vill ångra en commit och behålla ändringarna i arbetskatalogen kan du använda 'git reset' med alternativet '--soft'.
+
+   - Exempel:
+     git reset --soft HEAD~1
+     Detta kommer att ångra den senaste commit men behålla ändringarna i arbetskatalogen, vilket gör dem redo för en ny commit.
+
+4. Ångra och skapa en ny commit:
+   - Om du vill ångra en commit och skapa en ny commit med de önskade ändringarna kan du använda   'git revert'.
+
+   - Exempel:
+     git revert <commit_hash>
+     Detta kommer att skapa en ny commit som gör motsatsen till den angivna commit.
+
+När man ångrar eller ändrar historien i en gren som delas med andra (till exempel 'master'), bör man vara försiktig eftersom detta kan skapa problem för samarbetet. I allmänhet bör man undvika att ändra historien om andra redan har hämtat denna gren. Om man måste göra det, kommunicera med ditt team och överväg att använda 'git revert' för att undvika problem.
