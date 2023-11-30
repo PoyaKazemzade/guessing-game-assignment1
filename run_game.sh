@@ -2,10 +2,11 @@
 name="Poya_Kazemzade"
 echo "$name"
 suffex="_labb"
-echo "$name$suffex"
-mkdir $name$suffex
-cp *.java ./Poya_Kazemzade_labb
-cd ./Poya_kazemzade_labb
+new_directory="$name$suffex"
+echo "$new_directory"
+mkdir ./"$new_directory"
+cp ./*.java ./"$new_directory"
+cd ./"$new_directory"
 current_directory=$(pwd)
 echo "Running game from $current_directory"
 echo "Compiling..."
